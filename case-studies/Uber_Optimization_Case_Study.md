@@ -24,6 +24,7 @@ Python (Pandas, NumPy), SQL, Power BI, Excel
 To ensure confidentiality, only non-sensitive, self-created artifacts are shared:
 - Regression Analysis screenshots (sample data only)
 
-assets/regression-analysis.png
+
+![Regression Analysis](../assets/regression-analysis.png)
 
 *Note: Original datasets containing confidential or proprietary information are not included.*
