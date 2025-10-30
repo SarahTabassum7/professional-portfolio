@@ -22,10 +22,9 @@ Power BI, SQL Server, Spring Boot, Azure DevOps, Google Cloud Storage, Jira, Luc
 
 ## Public Artifacts Included in This Folder
 To maintain confidentiality, only non-sensitive, self-created artifacts are shared:
-- Workflow Diagrams (redacted and high-level)
-- High-level feature overview
-- Dashboard mockups (no real data)
+- Workflow Diagrams
 
 *Note: Detailed BRDs/FRDs and proprietary materials are not included due to confidentiality.*
 
-![RecruitEdge Workflow](../assets/recruitedge-workflow.png)
+![RecruitEdge Workflow](../assets/process-flow.png)
+
