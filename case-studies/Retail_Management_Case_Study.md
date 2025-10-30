@@ -4,7 +4,7 @@
 A web-based application designed to streamline daily retail operations, including inventory management, billing, and customer records, with basic reporting for decision support.
 
 ## My Role
-Business Analyst & Developer
+Analyst & Developer
 
 ## Key Responsibilities
 - Conducted requirement gathering with target end-users to define core retail workflows.
