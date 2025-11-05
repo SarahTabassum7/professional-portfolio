@@ -22,5 +22,5 @@ Power BI, SQL Server, Spring Boot, Azure DevOps, Google Cloud Storage, Jira, Luc
 
 *Note: Detailed BRDs/FRDs and proprietary materials are not included due to confidentiality.*
 
-![RecruitEdge Workflow](../assets/process-flow.png)
+
 
