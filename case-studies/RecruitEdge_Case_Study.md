@@ -20,10 +20,6 @@ Business Analyst
 ## Tools & Technologies
 Power BI, SQL Server, Spring Boot, Azure DevOps, Google Cloud Storage, Jira, Lucidchart, MS Visio
 
-## Public Artifacts Included in This Folder
-To maintain confidentiality, only non-sensitive, self-created artifacts are shared:
-- Workflow Diagrams
-
 *Note: Detailed BRDs/FRDs and proprietary materials are not included due to confidentiality.*
 
 ![RecruitEdge Workflow](../assets/process-flow.png)
