@@ -7,7 +7,7 @@ I build data-driven business solutions that simplify processes, improve decision
 
 ## Resume
 
-[**Download My Resume (PDF)**](resume/Sarah_T_Resume.pdf)
+[**Download My Resume (PDF)**](res)
 
 ---
 
