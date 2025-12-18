@@ -1,13 +1,13 @@
 # Professional Portfolio – Sarah Tabassum
 
 Welcome to my professional portfolio.  
-I build data-driven business solutions that simplify processes, improve decision-making, and enhance user experiences across IT, consulting, and analytics domains.
+I build data-driven business solutions that simplify processes, improve decision-making, and enhance user experiences across IT and analytics domains.
 
 ---
 
 ## Resume
 
-[**Download My Resume (PDF)**](resume/SarahT-Analyst-Resume-2025.pdf)
+[**Download My Resume (PDF)**](resume/Sarah Tabassum-Technical Analyst-Resume-2025.pdf)
 
 ---
 
