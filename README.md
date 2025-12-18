@@ -7,7 +7,7 @@ I build data-driven business solutions that simplify processes, improve decision
 
 ## Resume
 
-[**Download My Resume (PDF)**](resume/Sarah Tabassum-Technical Analyst-Resume-2025.pdf)
+[**Download My Resume (PDF)**](resume/Sarah_Tabassum-Technical_Analyst-Resume-2025.pdf)
 
 ---
 
