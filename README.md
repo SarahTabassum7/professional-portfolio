@@ -24,7 +24,7 @@ Specialized in SQL validation, Power BI reporting, workflow automation, machine 
 |---------|------------|-------------|------------|
 | RecruitEdge – AI Staffing Portal | AI / Product / Analytics | AI-enabled hiring platform integrating resume intelligence, fraud detection, and ATS workflows. | [View](case-studies/RecruitEdge_Case_Study.md) |
 | AI Staffing & Fraud Platform (PamTen) | Risk / Compliance / BI | Fraud detection and identity verification system with operational dashboards. | [View](case-studies/PamTen_Fraud_Case_Study.md) |
-| Customer Churn Prediction | Machine Learning / Analytics | Supervised ML models for churn forecasting and retention insights. | [View](case-studies/Churn_Prediction_Case_Study.md) |
+| Customer Churn Prediction | Machine Learning / Analytics | Supervised ML models for churn forecasting and retention insights. | [View](case-Customer_Churn_ML_Case_Study.md) |
 | Uber Ride Allocation Optimization | Forecasting / Operations | Predictive analytics to improve driver allocation and reduce dispatch delays. | [View](case-studies/Uber_Optimization_Case_Study.md) |
 | Online Retail Management System | Software / Process | Web-based system automating inventory, billing, and customer tracking. | [View](case-studies/Retail_Management_Case_Study.md) |
 
