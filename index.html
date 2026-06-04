@@ -1,0 +1,395 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Sarah Tabassum — Business Analyst Portfolio</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500&display=swap" rel="stylesheet"/>
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --bg:#FAFAF8;--surface:#FFFFFF;--border:#E8E6E0;--border-strong:#C8C6C0;
+  --text:#1A1A18;--muted:#666660;--hint:#999994;
+  --green:#1D9E75;--green-bg:#E1F5EE;--green-text:#0F6E56;
+  --blue-bg:#E6F1FB;--blue-text:#185FA5;
+  --purple-bg:#EEEDFE;--purple-text:#3C3489;
+  --gray-bg:#F1EFE8;--gray-text:#5F5E5A;
+  --radius:8px;--radius-lg:12px;
+}
+@media(prefers-color-scheme:dark){:root{
+  --bg:#1A1A18;--surface:#222220;--border:#333330;--border-strong:#555550;
+  --text:#F0EFE8;--muted:#A0A09A;--hint:#666660;
+  --green:#1D9E75;--green-bg:#04342C;--green-text:#9FE1CB;
+  --blue-bg:#042C53;--blue-text:#85B7EB;
+  --purple-bg:#26215C;--purple-text:#AFA9EC;
+  --gray-bg:#2C2C2A;--gray-text:#B4B2A9;
+}}
+body{font-family:'DM Sans',sans-serif;background:var(--bg);color:var(--text);line-height:1.6;font-size:15px}
+a{color:inherit;text-decoration:none}
+.container{max-width:860px;margin:0 auto;padding:0 24px}
+
+/* NAV */
+nav{border-bottom:0.5px solid var(--border);padding:16px 0;position:sticky;top:0;background:var(--bg);z-index:100}
+.nav-inner{display:flex;justify-content:space-between;align-items:center}
+.nav-name{font-family:'DM Serif Display',serif;font-size:18px}
+.nav-links{display:flex;gap:24px;font-size:13px;color:var(--muted)}
+.nav-links a:hover{color:var(--text)}
+
+/* HERO */
+.hero{padding:64px 0 48px;border-bottom:0.5px solid var(--border)}
+.hero-label{font-size:12px;letter-spacing:0.1em;color:var(--muted);text-transform:uppercase;margin-bottom:12px}
+.hero-name{font-family:'DM Serif Display',serif;font-size:52px;line-height:1.1;margin-bottom:8px}
+.hero-name em{font-style:italic;color:var(--green)}
+.hero-subtitle{font-size:16px;color:var(--muted);margin-bottom:28px;max-width:540px;line-height:1.7}
+.hero-tags{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:32px}
+.tag{font-size:12px;font-weight:500;padding:5px 13px;border-radius:20px;border:0.5px solid var(--border-strong);color:var(--muted)}
+.hero-links{display:flex;gap:10px;flex-wrap:wrap}
+.btn{display:inline-flex;align-items:center;gap:8px;font-size:13px;font-weight:500;padding:9px 18px;border-radius:var(--radius);border:0.5px solid var(--border-strong);background:var(--surface);color:var(--text);cursor:pointer;transition:background .15s,border-color .15s}
+.btn:hover{background:var(--border);border-color:var(--border-strong)}
+.btn-primary{background:var(--text);color:var(--bg);border-color:var(--text)}
+.btn-primary:hover{opacity:.85}
+
+/* METRICS */
+.metrics{padding:40px 0;border-bottom:0.5px solid var(--border)}
+.metrics-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:1px;background:var(--border);border:0.5px solid var(--border);border-radius:var(--radius-lg);overflow:hidden}
+.metric{background:var(--surface);padding:24px 20px}
+.metric-num{font-family:'DM Serif Display',serif;font-size:36px;color:var(--text);margin-bottom:4px}
+.metric-label{font-size:12px;color:var(--muted);line-height:1.5}
+
+/* SECTIONS */
+.section{padding:56px 0;border-bottom:0.5px solid var(--border)}
+.section:last-child{border-bottom:none;padding-bottom:80px}
+.sec-header{display:flex;justify-content:space-between;align-items:baseline;margin-bottom:28px}
+.sec-title{font-family:'DM Serif Display',serif;font-size:28px}
+.sec-link{font-size:13px;color:var(--muted)}
+.sec-link:hover{color:var(--text)}
+
+/* PROJECTS */
+.proj-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:12px}
+.proj-card{background:var(--surface);border:0.5px solid var(--border);border-radius:var(--radius-lg);padding:20px;transition:border-color .15s,transform .15s}
+.proj-card:hover{border-color:var(--border-strong);transform:translateY(-2px)}
+.proj-card.live{border-top:2px solid var(--green)}
+.proj-badge{display:inline-block;font-size:11px;font-weight:500;padding:3px 10px;border-radius:20px;margin-bottom:12px}
+.badge-live{background:var(--green-bg);color:var(--green-text)}
+.badge-ml{background:var(--blue-bg);color:var(--blue-text)}
+.badge-ba{background:var(--purple-bg);color:var(--purple-text)}
+.badge-acad{background:var(--gray-bg);color:var(--gray-text)}
+.proj-title{font-size:14px;font-weight:500;margin-bottom:4px}
+.proj-sub{font-size:12px;color:var(--muted);margin-bottom:10px}
+.proj-desc{font-size:13px;color:var(--muted);line-height:1.65;margin-bottom:14px}
+.proj-chips{display:flex;flex-wrap:wrap;gap:5px}
+.chip{font-size:11px;color:var(--muted);background:var(--bg);border:0.5px solid var(--border);padding:2px 9px;border-radius:20px}
+.proj-link{display:inline-flex;align-items:center;gap:5px;font-size:12px;color:var(--muted);margin-top:14px;border-top:0.5px solid var(--border);padding-top:12px;width:100%}
+.proj-link:hover{color:var(--text)}
+
+/* SKILLS */
+.skills-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:10px}
+.skill-group{background:var(--surface);border:0.5px solid var(--border);border-radius:var(--radius-lg);padding:18px 20px}
+.skill-icon{font-size:18px;margin-bottom:10px;display:block}
+.skill-group-title{font-size:13px;font-weight:500;margin-bottom:8px}
+.skill-list{font-size:12px;color:var(--muted);line-height:1.9}
+
+/* EXPERIENCE */
+.exp-timeline{position:relative;padding-left:20px}
+.exp-timeline::before{content:'';position:absolute;left:3px;top:6px;bottom:6px;width:0.5px;background:var(--border)}
+.exp-item{position:relative;padding-bottom:28px}
+.exp-item:last-child{padding-bottom:0}
+.exp-dot{position:absolute;left:-20px;top:6px;width:8px;height:8px;border-radius:50%;background:var(--border-strong);border:2px solid var(--bg)}
+.exp-dot.current{background:var(--green)}
+.exp-title{font-size:14px;font-weight:500}
+.exp-company{font-size:13px;color:var(--muted);margin-top:2px}
+.exp-date{font-size:12px;color:var(--hint);margin-top:2px}
+.exp-bullets{margin-top:8px;padding-left:14px}
+.exp-bullets li{font-size:13px;color:var(--muted);line-height:1.65;margin-bottom:3px;list-style:disc}
+
+/* ABOUT */
+.about-text{font-size:15px;color:var(--muted);line-height:1.85;max-width:640px}
+.about-text strong{color:var(--text);font-weight:500}
+
+/* CONTACT */
+.contact-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:10px;margin-bottom:24px}
+.contact-card{background:var(--surface);border:0.5px solid var(--border);border-radius:var(--radius-lg);padding:18px 20px}
+.contact-label{font-size:11px;color:var(--hint);text-transform:uppercase;letter-spacing:.06em;margin-bottom:4px}
+.contact-value{font-size:13px;font-weight:500}
+
+/* FOOTER */
+footer{padding:32px 0;border-top:0.5px solid var(--border);display:flex;justify-content:space-between;align-items:center;font-size:12px;color:var(--hint)}
+
+@media(max-width:600px){
+  .hero-name{font-size:36px}
+  .nav-links{display:none}
+  .metrics-grid{grid-template-columns:1fr 1fr}
+}
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="container">
+    <div class="nav-inner">
+      <span class="nav-name">Sarah Tabassum</span>
+      <div class="nav-links">
+        <a href="#projects">Projects</a>
+        <a href="#skills">Skills</a>
+        <a href="#experience">Experience</a>
+        <a href="#contact">Contact</a>
+      </div>
+    </div>
+  </div>
+</nav>
+
+<div class="container">
+
+  <!-- HERO -->
+  <section class="hero">
+    <p class="hero-label">Business Analyst · San Jose, CA · Open to Work</p>
+    <h1 class="hero-name">Sarah<br/><em>Tabassum</em></h1>
+    <p class="hero-subtitle">6+ years translating complex business needs into structured, actionable solutions — across fintech, e-commerce, HR tech, and financial services.</p>
+    <div class="hero-tags">
+      <span class="tag">BRDs · FRDs · RTMs</span>
+      <span class="tag">SQL · Power BI · Python</span>
+      <span class="tag">Agile / Scrum</span>
+      <span class="tag">UAT & Stakeholder Management</span>
+      <span class="tag">Financial Modeling</span>
+    </div>
+    <div class="hero-links">
+      <a class="btn btn-primary" href="resume/Sarah_Tabassum_Business_Analyst_Resume_2026.pdf" download>↓ Download Resume</a>
+      <a class="btn" href="https://www.linkedin.com/in/sarah-tabassum-b2000b388" target="_blank">LinkedIn</a>
+      <a class="btn" href="https://github.com/SarahTabassum7" target="_blank">GitHub</a>
+      <a class="btn" href="mailto:sarahtabassum057@gmail.com">Email Me</a>
+    </div>
+  </section>
+
+  <!-- METRICS -->
+  <div class="metrics">
+    <div class="metrics-grid">
+      <div class="metric"><div class="metric-num">25%</div><div class="metric-label">Data discrepancy reduction via SQL validation at PamTen</div></div>
+      <div class="metric"><div class="metric-num">20%</div><div class="metric-label">Post-release defect reduction through structured UAT</div></div>
+      <div class="metric"><div class="metric-num">12%</div><div class="metric-label">Issue resolution accuracy improvement at Amazon</div></div>
+      <div class="metric"><div class="metric-num">30%</div><div class="metric-label">Team onboarding efficiency improvement via SOPs</div></div>
+    </div>
+  </div>
+
+  <!-- ABOUT -->
+  <section class="section">
+    <div class="sec-header"><h2 class="sec-title">About Me</h2></div>
+    <p class="about-text">
+      I'm a Business Analyst who bridges the gap between <strong>what the business needs</strong> and <strong>what technology delivers</strong>. I specialize in the full BA lifecycle — requirements elicitation, process mapping, BRDs, FRDs, RTMs, and UAT — working across Agile and Waterfall environments with product, engineering, QA, and C-suite stakeholders.<br/><br/>
+      What sets me apart is a <strong>strong technical edge</strong>. I write the SQL to validate the data behind requirements, build Power BI dashboards to track outcomes, and automate workflows in Python. That lets me work faster, catch more issues, and communicate more credibly with engineering teams than a typical BA.<br/><br/>
+      I've delivered across <strong>Synchrony Financial, Amazon, PamTen, and RAZR Capital LLC</strong> — and I'm currently contributing BA and financial analysis expertise to <strong>SportsPulse</strong>, a live AI-powered SaaS platform in the $17.5B sports management market.
+    </p>
+  </section>
+
+  <!-- PROJECTS -->
+  <section class="section" id="projects">
+    <div class="sec-header">
+      <h2 class="sec-title">Featured Projects</h2>
+      <a class="sec-link" href="https://github.com/SarahTabassum7" target="_blank">View all on GitHub →</a>
+    </div>
+    <div class="proj-grid">
+
+      <div class="proj-card live">
+        <span class="proj-badge badge-live">Live Product</span>
+        <div class="proj-title">SportsPulse — AI Sports League Management</div>
+        <div class="proj-sub">Business & Financial Analyst · Jan 2026 – Present</div>
+        <div class="proj-desc">Contributing BA & financial analysis on a live SaaS platform serving 24+ leagues and 1,847+ players across 3 global markets in the $17.5B sports management industry.</div>
+        <div class="proj-chips">
+          <span class="chip">Financial Modeling</span>
+          <span class="chip">BRDs & RTMs</span>
+          <span class="chip">8+ KPIs</span>
+          <span class="chip">SaaS Metrics</span>
+        </div>
+        <a class="proj-link" href="https://www.sportspulse.us" target="_blank">Visit sportspulse.us →</a>
+      </div>
+
+      <div class="proj-card">
+        <span class="proj-badge badge-ba">Business Analysis</span>
+        <div class="proj-title">AI-Enabled Staffing Portal</div>
+        <div class="proj-sub">PamTen Inc. · Jan 2025 – Jan 2026</div>
+        <div class="proj-desc">End-to-end BA delivery on an AI-powered hiring platform with 10+ integrated modules — requirements, validation, UAT, and Power BI executive dashboards.</div>
+        <div class="proj-chips">
+          <span class="chip">35% effort reduction</span>
+          <span class="chip">40% visibility gain</span>
+          <span class="chip">100% UAT sign-off</span>
+        </div>
+        <a class="proj-link" href="https://github.com/SarahTabassum7/recruitedge-ai-staffing-portal" target="_blank">View on GitHub →</a>
+      </div>
+
+      <div class="proj-card">
+        <span class="proj-badge badge-ml">Machine Learning</span>
+        <div class="proj-title">Customer Churn Prediction</div>
+        <div class="proj-sub">Personal Project · Jan 2026</div>
+        <div class="proj-desc">Supervised ML classification model predicting customer churn with 85% accuracy using Logistic Regression, Decision Trees, and Random Forest. Translated model outputs into retention strategy recommendations.</div>
+        <div class="proj-chips">
+          <span class="chip">85% accuracy</span>
+          <span class="chip">ROC-AUC 0.836</span>
+          <span class="chip">Python · Scikit-learn</span>
+        </div>
+        <a class="proj-link" href="https://github.com/SarahTabassum7/customer-churn-ml" target="_blank">View on GitHub →</a>
+      </div>
+
+      <div class="proj-card">
+        <span class="proj-badge badge-acad">Academic</span>
+        <div class="proj-title">Uber Ride Allocation Optimization</div>
+        <div class="proj-sub">University of New Haven · Dec 2024</div>
+        <div class="proj-desc">Analyzed 100,000+ ride records using SQL and Python predictive modeling to optimize driver-rider matching and forecast peak demand, reducing allocation lag by 12%.</div>
+        <div class="proj-chips">
+          <span class="chip">12% lag reduction</span>
+          <span class="chip">100K+ records</span>
+          <span class="chip">SQL · Python</span>
+        </div>
+        <a class="proj-link" href="https://github.com/SarahTabassum7/professional-portfolio/blob/main/case-studies/Uber_Optimization_Case_Study.md" target="_blank">View Case Study →</a>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- SKILLS -->
+  <section class="section" id="skills">
+    <div class="sec-header"><h2 class="sec-title">Core Skills</h2></div>
+    <div class="skills-grid">
+      <div class="skill-group">
+        <div class="skill-group-title">Business Analysis</div>
+        <div class="skill-list">Requirements Elicitation · BRDs · FRDs · RTMs · User Stories · Acceptance Criteria · Business Case Development · Feasibility Analysis · Gap Analysis · As-Is/To-Be Process Mapping · Change Management · Impact Analysis · Stakeholder Management</div>
+      </div>
+      <div class="skill-group">
+        <div class="skill-group-title">Data & Business Intelligence</div>
+        <div class="skill-list">SQL (CTEs · Window Functions · Joins) · Power BI (DAX · M Query) · Tableau · Excel (Pivot Tables · Power Query · VLOOKUP) · Looker Studio · Google Analytics</div>
+      </div>
+      <div class="skill-group">
+        <div class="skill-group-title">Programming & Automation</div>
+        <div class="skill-list">Python (Pandas · NumPy · Scikit-learn) · R · SQL · .NET (C# · ASP.NET) · REST APIs · JSON · Power Automate · n8n · Git/GitHub</div>
+      </div>
+      <div class="skill-group">
+        <div class="skill-group-title">Financial Analysis</div>
+        <div class="skill-list">Financial Modeling · Investment Analysis · Due Diligence · Forecasting & Budgeting · Scenario Analysis · Revenue Analysis · Unit Economics (ARR · LTV · CAC · Churn) · KPI Tracking · Variance Analysis</div>
+      </div>
+      <div class="skill-group">
+        <div class="skill-group-title">Analytics & Machine Learning</div>
+        <div class="skill-list">Predictive Analytics · Regression · Classification · A/B Testing · EDA · Feature Engineering · Logistic Regression · Decision Trees · Random Forest · Model Evaluation</div>
+      </div>
+      <div class="skill-group">
+        <div class="skill-group-title">Testing, Tools & Delivery</div>
+        <div class="skill-list">UAT Planning · Functional & Regression Testing · Defect Tracking · Root Cause Analysis · Jira · Azure DevOps · Confluence · Figma · Balsamiq · Lucidchart · Agile/Scrum · Waterfall · SDLC</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- EXPERIENCE -->
+  <section class="section" id="experience">
+    <div class="sec-header"><h2 class="sec-title">Experience</h2></div>
+    <div class="exp-timeline">
+
+      <div class="exp-item">
+        <div class="exp-dot current"></div>
+        <div class="exp-title">Financial Business Analyst</div>
+        <div class="exp-company">RAZR Capital LLC · Remote, USA · Part-time</div>
+        <div class="exp-date">Jan 2026 – Present</div>
+        <ul class="exp-bullets">
+          <li>Financial modeling across 5+ investment opportunities — forecasting, scenario analysis, and portfolio performance</li>
+          <li>Due diligence on 4+ investments assessing risk-return profiles and market positioning</li>
+          <li>BRDs, process flows, RTMs, and UAT coordination across 6+ active projects</li>
+          <li>4+ Power BI dashboards tracking financial KPIs and operational metrics in real time</li>
+        </ul>
+      </div>
+
+      <div class="exp-item">
+        <div class="exp-dot current"></div>
+        <div class="exp-title">Business & Financial Analyst</div>
+        <div class="exp-company">SportsPulse · Remote · Freelance</div>
+        <div class="exp-date">Jan 2026 – Present</div>
+        <ul class="exp-bullets">
+          <li>Financial modeling across 3+ subscription tiers tracking ARR, LTV, CAC, and churn</li>
+          <li>5+ BRDs and process flows supporting feature prioritization across the platform</li>
+          <li>8+ platform KPIs analyzed for operational improvement and executive reporting</li>
+        </ul>
+      </div>
+
+      <div class="exp-item">
+        <div class="exp-dot"></div>
+        <div class="exp-title">Business Analyst</div>
+        <div class="exp-company">PamTen Inc. · Remote, USA</div>
+        <div class="exp-date">Jan 2025 – Jan 2026</div>
+        <ul class="exp-bullets">
+          <li>Reduced data discrepancies by 25% through advanced SQL validation across 10+ modules</li>
+          <li>Reduced post-release defects by 20% through structured UAT and root cause analysis</li>
+          <li>100% UAT sign-off across all releases · 30% onboarding efficiency improvement</li>
+        </ul>
+      </div>
+
+      <div class="exp-item">
+        <div class="exp-dot"></div>
+        <div class="exp-title">Business Analyst</div>
+        <div class="exp-company">Amazon Development Center · Hyderabad, India</div>
+        <div class="exp-date">Sep 2021 – Aug 2023</div>
+        <ul class="exp-bullets">
+          <li>Improved issue resolution accuracy by 12% through SQL and Python-driven analysis</li>
+          <li>Reduced repeat issues by 10% via root cause investigation and corrective action</li>
+          <li>Cut data preparation time by 15% through Power BI dashboards replacing manual reporting</li>
+        </ul>
+      </div>
+
+      <div class="exp-item">
+        <div class="exp-dot"></div>
+        <div class="exp-title">Business Analyst</div>
+        <div class="exp-company">Synchrony Financial · Hyderabad, India</div>
+        <div class="exp-date">Sep 2020 – Sep 2021</div>
+        <ul class="exp-bullets">
+          <li>Primary liaison between business, operations, and tech in a regulated fintech environment</li>
+          <li>Reduced downstream rework by 25% through Figma/Balsamiq wireframes and early feedback</li>
+          <li>Authored BRDs, FRDs, swimlane diagrams, and Agile user stories for workflow improvements</li>
+        </ul>
+      </div>
+
+      <div class="exp-item">
+        <div class="exp-dot"></div>
+        <div class="exp-title">Junior Software Developer</div>
+        <div class="exp-company">Ardra Design Studio · Hyderabad, India</div>
+        <div class="exp-date">Jun 2019 – Aug 2020</div>
+        <ul class="exp-bullets">
+          <li>Built backend features in Python and .NET, reducing feature enhancement time by 30%</li>
+          <li>Gathered and documented stakeholder requirements, bridging business and engineering</li>
+          <li>Optimized SQL queries improving API response times by 25%</li>
+        </ul>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- CONTACT -->
+  <section class="section" id="contact">
+    <div class="sec-header"><h2 class="sec-title">Contact</h2></div>
+    <div class="contact-grid">
+      <div class="contact-card">
+        <div class="contact-label">Email</div>
+        <div class="contact-value"><a href="mailto:sarahtabassum057@gmail.com">sarahtabassum057@gmail.com</a></div>
+      </div>
+      <div class="contact-card">
+        <div class="contact-label">Location</div>
+        <div class="contact-value">San Jose, CA, United States</div>
+      </div>
+      <div class="contact-card">
+        <div class="contact-label">LinkedIn</div>
+        <div class="contact-value"><a href="https://www.linkedin.com/in/sarah-tabassum-b2000b388" target="_blank">sarah-tabassum-b2000b388</a></div>
+      </div>
+      <div class="contact-card">
+        <div class="contact-label">GitHub</div>
+        <div class="contact-value"><a href="https://github.com/SarahTabassum7" target="_blank">SarahTabassum7</a></div>
+      </div>
+    </div>
+    <a class="btn btn-primary" href="resume/Sarah_Tabassum_Business_Analyst_Resume_2026.pdf" download>↓ Download Resume</a>
+  </section>
+
+</div>
+
+<footer>
+  <div class="container" style="display:flex;justify-content:space-between;width:100%">
+    <span>© 2026 Sarah Tabassum</span>
+    <span>Business Analyst · San Jose, CA</span>
+  </div>
+</footer>
+
+</body>
+</html>
