@@ -1,8 +1,8 @@
 # Sarah Tabassum — Business Analyst Portfolio
 
-🌐 **Live Portfolio:** https://sarahtabassum7.github.io/professional-portfolio/
+**Live Portfolio:** https://sarahtabassum7.github.io/professional-portfolio/
 
-📄 **Resume:** [Download PDF](https://github.com/SarahTabassum7/professional-portfolio/blob/main/resume/Sarah_Tabassum_Business_Analyst_Resume_2026.pdf)
+**Resume:** [Download PDF](https://github.com/SarahTabassum7/professional-portfolio/blob/main/resume/Sarah_Tabassum_Business_Analyst_Resume_2026.pdf)
 
 ---
 
@@ -22,9 +22,9 @@ Business Analyst with 6+ years of experience across fintech, e-commerce, HR tech
 - Reduced post-release defects by 20% through structured UAT and root cause analysis
 - Improved team onboarding efficiency by 30% through SOPs and knowledge transfer
 
-📧 sarahtabassum057@gmail.com
-💼 [LinkedIn](https://www.linkedin.com/in/sarah-tabassum-b2000b388)
-💻 [GitHub](https://github.com/SarahTabassum7)
+sarahtabassum057@gmail.com
+[LinkedIn](https://www.linkedin.com/in/sarah-tabassum-b2000b388)
+[GitHub](https://github.com/SarahTabassum7)
 
 ---
 
