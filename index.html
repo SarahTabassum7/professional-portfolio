@@ -764,7 +764,7 @@
     var img = new Image();
     var dpr = Math.min(window.devicePixelRatio || 1, 2);
 
-    var GRID_COLS = 74;
+    var GRID_COLS = 84;
     var particles = [];
     var W = 0, H = 0;
     var started = false;
@@ -789,13 +789,32 @@
       tctx.drawImage(img, 0, 0, cols, rows);
       var data = tctx.getImageData(0, 0, cols, rows).data;
 
+      function lum(x, y){
+        x = Math.max(0, Math.min(cols - 1, x));
+        y = Math.max(0, Math.min(rows - 1, y));
+        var idx = (y * cols + x) * 4;
+        return (0.299*data[idx] + 0.587*data[idx+1] + 0.114*data[idx+2]) / 255;
+      }
+
+      var grads = [], maxGrad = 0;
+      for(var gy = 0; gy < rows; gy++){
+        for(var gx0 = 0; gx0 < cols; gx0++){
+          var gx = lum(gx0+1, gy) - lum(gx0-1, gy);
+          var gyv = lum(gx0, gy+1) - lum(gx0, gy-1);
+          var g = Math.sqrt(gx*gx + gyv*gyv);
+          grads.push(g);
+          if(g > maxGrad) maxGrad = g;
+        }
+      }
+
       particles = [];
+      var gi = 0;
       for(var y = 0; y < rows; y++){
         for(var x = 0; x < cols; x++){
-          var idx = (y * cols + x) * 4;
-          var lum = (0.299*data[idx] + 0.587*data[idx+1] + 0.114*data[idx+2]) / 255;
-          var weight = 1 - lum;
-          if(weight < 0.14) continue;
+          var edgeW = grads[gi++] / (maxGrad || 1);
+          var base = 1 - lum(x, y);
+          var weight = Math.min(1, edgeW * 1.5 + base * 0.22);
+          if(weight < 0.18) continue;
           var angle = Math.random() * Math.PI * 2;
           var dist = (0.55 + Math.random() * 0.55) * 200;
           particles.push({
@@ -838,13 +857,11 @@
         var px = sx + ax + wx;
         var py = sy + ay + wy;
 
-        var r = (0.55 + p.weight * 1.7) * dpr;
-        var alpha = (0.3 + p.weight * 0.7) * ease;
+        var r = (0.4 + p.weight * 1.5) * dpr;
+        var alpha = (0.22 + p.weight * 0.78) * ease;
 
         ctx.beginPath();
         ctx.fillStyle = 'rgba(94,211,255,' + alpha + ')';
-        ctx.shadowColor = 'rgba(56,189,248,0.85)';
-        ctx.shadowBlur = 3 * dpr;
         ctx.arc(px, py, r, 0, Math.PI * 2);
         ctx.fill();
 
@@ -857,7 +874,6 @@
           ctx.stroke();
         }
       }
-      ctx.shadowBlur = 0;
     }
 
     function tick(time){
