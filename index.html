@@ -126,7 +126,60 @@
     padding-top:90px;
   }
   #particles{position:absolute;inset:0;width:100%;height:100%;z-index:0;}
-  .hero-inner{position:relative;z-index:2;max-width:820px;}
+
+  .hero-grid{
+    position:relative;z-index:2;width:100%;
+    display:grid;grid-template-columns:1.15fr 0.85fr;gap:56px;align-items:center;
+  }
+  @media(max-width:900px){
+    .hero-grid{grid-template-columns:1fr;gap:44px;}
+    .hero-visual{order:-1;}
+  }
+
+  .hero-inner{max-width:640px;}
+
+  .hero-visual{display:flex;flex-direction:column;align-items:center;gap:16px;}
+
+  .portrait-frame{
+    position:relative;
+    width:min(300px,72vw);
+    aspect-ratio:345/377;
+    border:1px solid var(--border);
+    border-radius:6px;
+    background:
+      linear-gradient(rgba(56,189,248,0.06) 1px,transparent 1px),
+      linear-gradient(90deg,rgba(56,189,248,0.06) 1px,transparent 1px),
+      var(--card);
+    background-size:14px 14px,14px 14px,100% 100%;
+    overflow:hidden;
+    box-shadow:0 0 0 1px rgba(56,189,248,0.08),0 24px 60px rgba(0,0,0,0.5);
+  }
+  .portrait-frame canvas{
+    position:absolute;inset:0;width:100%;height:100%;display:block;cursor:pointer;
+  }
+  .frame-corner{
+    position:absolute;width:20px;height:20px;border:2px solid var(--accent);z-index:3;
+    filter:drop-shadow(0 0 6px var(--accent-glow));
+  }
+  .frame-corner.tl{top:-1px;left:-1px;border-right:none;border-bottom:none;}
+  .frame-corner.tr{top:-1px;right:-1px;border-left:none;border-bottom:none;}
+  .frame-corner.bl{bottom:-1px;left:-1px;border-right:none;border-top:none;}
+  .frame-corner.br{bottom:-1px;right:-1px;border-left:none;border-top:none;}
+  .frame-scanline{
+    position:absolute;left:0;right:0;height:42%;top:-42%;
+    background:linear-gradient(180deg,transparent,rgba(56,189,248,0.16),transparent);
+    animation:scan-sweep 3.6s ease-in-out infinite;
+    pointer-events:none;z-index:2;
+  }
+  @keyframes scan-sweep{
+    0%{top:-42%;}
+    100%{top:100%;}
+  }
+  .portrait-readout{
+    font-family:var(--font-mono);font-size:0.72rem;letter-spacing:0.08em;
+    color:var(--text-muted);display:flex;align-items:center;gap:8px;text-transform:uppercase;
+  }
+  .portrait-readout .status-dot{width:6px;height:6px;}
 
   .status-badge{
     display:inline-flex;align-items:center;gap:9px;
@@ -333,22 +386,38 @@
 
 <section class="hero" id="hero">
   <canvas id="particles"></canvas>
-  <div class="hero-inner">
-    <div class="status-badge"><span class="status-dot"></span> Business Analyst &middot; San Jose, CA &middot; Open to Work</div>
-    <h1 class="hero-name">Sarah <span class="glow">Tabassum</span></h1>
-    <p class="hero-tag">6+ years translating complex business problems into structured, actionable solutions across fintech, e-commerce, HR tech, and financial services — with a growing focus on AI-enabled platforms.</p>
-    <div class="pill-row">
-      <span class="pill">BRDs &middot; FRDs &middot; RTMs</span>
-      <span class="pill">SQL &middot; Power BI &middot; Python</span>
-      <span class="pill">Agile / Scrum</span>
-      <span class="pill">AI-Enabled Systems</span>
-      <span class="pill">Financial Modeling</span>
+  <div class="hero-grid">
+    <div class="hero-inner">
+      <div class="status-badge"><span class="status-dot"></span> Business Analyst &middot; San Jose, CA &middot; Open to Work</div>
+      <h1 class="hero-name">Sarah <span class="glow">Tabassum</span></h1>
+      <p class="hero-tag">6+ years translating complex business problems into structured, actionable solutions across fintech, e-commerce, HR tech, and financial services — with a growing focus on AI-enabled platforms.</p>
+      <div class="pill-row">
+        <span class="pill">BRDs &middot; FRDs &middot; RTMs</span>
+        <span class="pill">SQL &middot; Power BI &middot; Python</span>
+        <span class="pill">Agile / Scrum</span>
+        <span class="pill">AI-Enabled Systems</span>
+        <span class="pill">Financial Modeling</span>
+      </div>
+      <div class="cta-row">
+        <a href="resume/Sarah_Tabassum_Business_Analyst_Resume_2026.pdf" class="btn btn-primary magnetic">Download Resume</a>
+        <a href="https://www.linkedin.com/in/sarahtabassum7" target="_blank" rel="noopener" class="btn btn-ghost magnetic">LinkedIn</a>
+        <a href="https://github.com/SarahTabassum7" target="_blank" rel="noopener" class="btn btn-ghost magnetic">GitHub</a>
+        <a href="mailto:sarahtabassum057@gmail.com" class="btn btn-ghost magnetic">Email Me</a>
+      </div>
     </div>
-    <div class="cta-row">
-      <a href="resume/Sarah_Tabassum_Business_Analyst_Resume_2026.pdf" class="btn btn-primary magnetic">Download Resume</a>
-      <a href="https://www.linkedin.com/in/sarahtabassum7" target="_blank" rel="noopener" class="btn btn-ghost magnetic">LinkedIn</a>
-      <a href="https://github.com/SarahTabassum7" target="_blank" rel="noopener" class="btn btn-ghost magnetic">GitHub</a>
-      <a href="mailto:sarahtabassum057@gmail.com" class="btn btn-ghost magnetic">Email Me</a>
+    <div class="hero-visual">
+      <div class="portrait-frame" id="portrait-frame">
+        <span class="frame-corner tl"></span>
+        <span class="frame-corner tr"></span>
+        <span class="frame-corner bl"></span>
+        <span class="frame-corner br"></span>
+        <canvas id="portrait-canvas" title="Click to replay"></canvas>
+        <div class="frame-scanline"></div>
+      </div>
+      <div class="portrait-readout">
+        <span class="status-dot"></span>
+        <span id="portrait-status">RENDERING IMAGE&hellip;</span>
+      </div>
     </div>
   </div>
   <div class="scroll-indicator">Scroll</div>
@@ -590,6 +659,174 @@
 
 <script>
 (function(){
+
+  /* ---------------- portrait pixel-dissolve ---------------- */
+  var PORTRAIT_B64 =
+    "/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDAAYEBAUEBAYFBQUGBgYHCQ4JCQgICRINDQoOFRIWFhUSFBQXGiEcFxgfGRQUHScdHyIj" +
+    "JSUlFhwpLCgkKyEkJST/2wBDAQYGBgkICREJCREkGBQYJCQkJCQkJCQkJCQkJCQkJCQkJCQkJCQkJCQkJCQkJCQkJCQkJCQkJCQk" +
+    "JCQkJCQkJCT/wAARCAC9AK0DASIAAhEBAxEB/8QAHwAAAQUBAQEBAQEAAAAAAAAAAAECAwQFBgcICQoL/8QAtRAAAgEDAwIEAwUF" +
+    "BAQAAAF9AQIDAAQRBRIhMUEGE1FhByJxFDKBkaEII0KxwRVS0fAkM2JyggkKFhcYGRolJicoKSo0NTY3ODk6Q0RFRkdISUpTVFVW" +
+    "V1hZWmNkZWZnaGlqc3R1dnd4eXqDhIWGh4iJipKTlJWWl5iZmqKjpKWmp6ipqrKztLW2t7i5usLDxMXGx8jJytLT1NXW19jZ2uHi" +
+    "4+Tl5ufo6erx8vP09fb3+Pn6/8QAHwEAAwEBAQEBAQEBAQAAAAAAAAECAwQFBgcICQoL/8QAtREAAgECBAQDBAcFBAQAAQJ3AAEC" +
+    "AxEEBSExBhJBUQdhcRMiMoEIFEKRobHBCSMzUvAVYnLRChYkNOEl8RcYGRomJygpKjU2Nzg5OkNERUZHSElKU1RVVldYWVpjZGVm" +
+    "Z2hpanN0dXZ3eHl6goOEhYaHiImKkpOUlZaXmJmaoqOkpaanqKmqsrO0tba3uLm6wsPExcbHyMnK0tPU1dbX2Nna4uPk5ebn6Onq" +
+    "8vP09fb3+Pn6/9oADAMBAAIRAxEAPwCgl5df8/Nx/wB/W/xqWO5uc/8AHzP/AN/G/wAagiXNTItbJEMsC6uMcXM+f+ujf405bm5P" +
+    "W4n/AO/jf41CoqRRVpCuSm5uccXM/wD38b/GlFxcnj7TP/38b/GowvNTKnFUkTcTz7g/8vE//fxv8aXz7hRzcT/9/G/xpdmOnWuU" +
+    "8U+OrHQy9tEfPuxxtB4U+5/pRK0VdjV3sdNJfSxKWa6mAHXMjY/nXO6j8RdOsNy/b7m4ccbYGZ8fjnH615pqfijUtZkIlmcJ3ReF" +
+    "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";
+  (function(){
+    var frame = document.getElementById('portrait-frame');
+    var canvas = document.getElementById('portrait-canvas');
+    if(!frame || !canvas) return;
+    var statusEl = document.getElementById('portrait-status');
+    var ctx = canvas.getContext('2d');
+    var img = new Image();
+    var played = false;
+    var dpr = Math.min(window.devicePixelRatio || 1, 2);
+
+    function sizeCanvas(){
+      var rect = frame.getBoundingClientRect();
+      canvas.width = Math.round(rect.width * dpr);
+      canvas.height = Math.round(rect.height * dpr);
+    }
+
+    function drawPixelated(pixelSize){
+      var w = canvas.width, h = canvas.height;
+      if(w === 0 || h === 0) return;
+      var cols = Math.max(1, Math.round(w / (pixelSize * dpr)));
+      var rows = Math.max(1, Math.round(h / (pixelSize * dpr)));
+      var temp = document.createElement('canvas');
+      temp.width = cols; temp.height = rows;
+      var tctx = temp.getContext('2d');
+      tctx.drawImage(img, 0, 0, cols, rows);
+      ctx.imageSmoothingEnabled = false;
+      ctx.clearRect(0, 0, w, h);
+      ctx.drawImage(temp, 0, 0, cols, rows, 0, 0, w, h);
+    }
+
+    function playDissolve(){
+      if(!img.complete || img.naturalWidth === 0) return;
+      sizeCanvas();
+      var state = { val: 46 };
+      if(statusEl) statusEl.textContent = 'COMPILING IMAGE…';
+      if(window.gsap){
+        gsap.to(state, {
+          val: 1,
+          duration: 2.2,
+          ease: 'power2.out',
+          onUpdate: function(){ drawPixelated(state.val); },
+          onComplete: function(){
+            drawPixelated(1);
+            if(statusEl) statusEl.textContent = 'IDENTITY VERIFIED';
+          }
+        });
+      } else {
+        drawPixelated(1);
+        if(statusEl) statusEl.textContent = 'IDENTITY VERIFIED';
+      }
+    }
+
+    img.onload = function(){
+      if('IntersectionObserver' in window){
+        var io = new IntersectionObserver(function(entries){
+          entries.forEach(function(entry){
+            if(entry.isIntersecting && !played){
+              played = true;
+              setTimeout(playDissolve, 250);
+            }
+          });
+        }, { threshold: 0.3 });
+        io.observe(frame);
+      } else {
+        played = true;
+        playDissolve();
+      }
+    };
+    img.src = 'data:image/jpeg;base64,' + PORTRAIT_B64;
+
+    canvas.addEventListener('click', function(){ playDissolve(); });
+    window.addEventListener('resize', function(){
+      if(played){ sizeCanvas(); drawPixelated(1); }
+    });
+  })();
+
 
   /* ---------------- custom cursor ---------------- */
   var dot = document.getElementById('cursor-dot');
