@@ -313,6 +313,8 @@
   .sy-num{font-family:var(--font-display);font-size:2.1rem;font-weight:700;color:var(--accent);line-height:1;}
   .sy-label{font-family:var(--font-mono);font-size:0.68rem;color:var(--text-muted);letter-spacing:0.05em;margin-top:4px;text-transform:uppercase;}
   .sy-stagger li{opacity:0;transform:translateY(14px);}
+  .about-text .sy-fade{opacity:0;transform:translateY(14px);}
+  .impact-list.sy-stagger .impact-item{opacity:0;transform:translateY(14px);}
 </style>
 </head>
 <body>
@@ -368,14 +370,14 @@
     <h2>The gap between the business and the build</h2>
   </div>
   <div class="about-grid">
-    <div class="about-text reveal">
-      <p>I'm a Business Analyst with <strong>6+ years of experience</strong> translating complex business problems into structured, actionable solutions across fintech, e-commerce, HR tech, and financial services, with a growing focus on <strong>AI-enabled platforms</strong>.</p>
-      <p>I specialize in the full BA lifecycle: requirements elicitation, BRDs, FRDs, RTMs, As-Is/To-Be process mapping, UAT coordination, and stakeholder management — with a technical edge that sets me apart. I write the SQL to validate the data behind requirements, build Power BI dashboards to track outcomes, and automate workflows in Python.</p>
-      <div class="impact-list">
-        <div class="impact-item"><span class="num">25%</span><span>Reduced data discrepancies through advanced SQL validation at PamTen</span></div>
-        <div class="impact-item"><span class="num">12%</span><span>Improved issue resolution accuracy at Amazon through Python-driven analysis</span></div>
-        <div class="impact-item"><span class="num">20%</span><span>Reduced post-release defects through structured UAT and root cause analysis</span></div>
-        <div class="impact-item"><span class="num">30%</span><span>Improved team onboarding efficiency through SOPs and knowledge transfer</span></div>
+    <div class="about-text reveal" id="sy-about">
+      <p class="sy-fade">I'm a Business Analyst with <strong>6+ years of experience</strong> translating complex business problems into structured, actionable solutions across fintech, e-commerce, HR tech, and financial services, with a growing focus on <strong>AI-enabled platforms</strong>.</p>
+      <p class="sy-fade">I specialize in the full BA lifecycle: requirements elicitation, BRDs, FRDs, RTMs, As-Is/To-Be process mapping, UAT coordination, and stakeholder management — with a technical edge that sets me apart. I write the SQL to validate the data behind requirements, build Power BI dashboards to track outcomes, and automate workflows in Python.</p>
+      <div class="impact-list sy-stagger">
+        <div class="impact-item"><span class="num sy-count" data-target="25" data-suffix="%">0%</span><span>Reduced data discrepancies through advanced SQL validation at PamTen</span></div>
+        <div class="impact-item"><span class="num sy-count" data-target="12" data-suffix="%">0%</span><span>Improved issue resolution accuracy at Amazon through Python-driven analysis</span></div>
+        <div class="impact-item"><span class="num sy-count" data-target="20" data-suffix="%">0%</span><span>Reduced post-release defects through structured UAT and root cause analysis</span></div>
+        <div class="impact-item"><span class="num sy-count" data-target="30" data-suffix="%">0%</span><span>Improved team onboarding efficiency through SOPs and knowledge transfer</span></div>
       </div>
     </div>
     <div class="side-card reveal">
@@ -762,13 +764,14 @@
   function runCounters(){
     if(counted) return;
     counted = true;
-    counters.forEach(function(el){
+    counters.forEach(function(el, i){
       var target = parseInt(el.getAttribute('data-count'), 10);
       var obj = {val: 0};
       if(window.gsap){
         gsap.to(obj, {
           val: target,
           duration: 1.6,
+          delay: i * 0.12,
           ease: 'power1.out',
           onUpdate: function(){ el.textContent = Math.round(obj.val); }
         });
@@ -821,6 +824,41 @@
           stagger: 0.18,
           delay: 0.3,
           ease: 'power2.out'
+        });
+      }
+    });
+  }
+  
+  var syAbout = document.getElementById('sy-about');
+  if(syAbout && window.gsap && window.ScrollTrigger){
+    var syFades = syAbout.querySelectorAll('.sy-fade');
+    var syItems = syAbout.querySelectorAll('.impact-list.sy-stagger .impact-item');
+    gsap.set(syFades, {opacity: 0, y: 14});
+    gsap.set(syItems, {opacity: 0, y: 14});
+    ScrollTrigger.create({
+      trigger: syAbout,
+      start: 'top 78%',
+      once: true,
+      onEnter: function(){
+        gsap.to(syFades, {
+          opacity: 1, y: 0, duration: 0.6, stagger: 0.25, ease: 'power2.out'
+        });
+        gsap.to(syItems, {
+          opacity: 1, y: 0, duration: 0.5, stagger: 0.15, delay: 0.7, ease: 'power2.out'
+        });
+        syItems.forEach(function(item, i){
+          var el = item.querySelector('.sy-count');
+          if(!el) return;
+          var target = parseFloat(el.getAttribute('data-target'));
+          var suffix = el.getAttribute('data-suffix') || '';
+          var obj = {val: 0};
+          gsap.to(obj, {
+            val: target,
+            duration: 0.9,
+            delay: 0.7 + i * 0.15,
+            ease: 'power2.out',
+            onUpdate: function(){ el.textContent = Math.round(obj.val) + suffix; }
+          });
         });
       }
     });
