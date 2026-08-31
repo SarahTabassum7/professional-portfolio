@@ -166,12 +166,9 @@
     font-family:var(--font-mono);font-size:0.72rem;letter-spacing:0.14em;
     text-transform:uppercase;color:var(--text-muted);
     display:flex;align-items:center;gap:10px;
+    animation:scroll-fade 2.2s ease-in-out infinite;
   }
-  .scroll-indicator::after{
-    content:'';width:1px;height:34px;background:linear-gradient(var(--accent),transparent);
-    animation:scroll-line 1.8s ease-in-out infinite;
-  }
-  @keyframes scroll-line{0%,100%{opacity:.3;}50%{opacity:1;}}
+  @keyframes scroll-fade{0%,100%{opacity:.4;}50%{opacity:1;}}
 
   /* ---------- stats ---------- */
   .stats{
