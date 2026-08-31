@@ -308,6 +308,11 @@
 
   /* ---------- reveal base state ---------- */
   .reveal{opacity:0;transform:translateY(36px);}
+  .sy-metrics{display:flex;gap:32px;margin:14px 0 12px;}
+  .sy-metric{display:flex;flex-direction:column;}
+  .sy-num{font-family:var(--font-display);font-size:2.1rem;font-weight:700;color:var(--accent);line-height:1;}
+  .sy-label{font-family:var(--font-mono);font-size:0.68rem;color:var(--text-muted);letter-spacing:0.05em;margin-top:4px;text-transform:uppercase;}
+  .sy-stagger li{opacity:0;transform:translateY(14px);}
 </style>
 </head>
 <body>
@@ -419,13 +424,17 @@
       <a href="https://github.com/SarahTabassum7/recruitedge-ai-staffing-portal" target="_blank" rel="noopener" class="project-link magnetic">View on GitHub <span class="arrow">&rarr;</span></a>
     </div>
 
-    <div class="project-card tilt reveal">
+    <div class="project-card tilt reveal" id="sy-churn">
       <div class="project-tag">Machine Learning</div>
       <h3>Customer Churn Prediction</h3>
       <div class="project-period">ML Classification</div>
       <p class="desc">Predictive modeling to flag at-risk customers and inform retention strategy.</p>
-      <ul class="project-metrics">
-        <li>85% accuracy, ROC-AUC 0.836</li>
+      <div class="sy-metrics">
+        <div class="sy-metric"><span class="sy-num" data-target="85" data-decimals="0" data-suffix="%">0%</span><span class="sy-label">Model accuracy</span></div>
+        <div class="sy-metric"><span class="sy-num" data-target="0.836" data-decimals="3" data-suffix="">0.000</span><span class="sy-label">ROC-AUC</span></div>
+      </div>
+      <ul class="project-metrics sy-stagger">
+        
         <li>Compared Logistic Regression, Decision Tree, Random Forest</li>
         <li>Translated outputs into retention strategy recommendations</li>
       </ul>
@@ -780,6 +789,42 @@
     runCounters();
   }
 
+  
+  var syCard = document.getElementById('sy-churn');
+  if(syCard && window.gsap && window.ScrollTrigger){
+    var syNums = syCard.querySelectorAll('.sy-num');
+    var syLis = syCard.querySelectorAll('.sy-stagger li');
+    gsap.set(syLis, {opacity: 0, y: 14});
+    ScrollTrigger.create({
+      trigger: syCard,
+      start: 'top 82%',
+      once: true,
+      onEnter: function(){
+        syNums.forEach(function(el){
+          var target = parseFloat(el.getAttribute('data-target'));
+          var decimals = parseInt(el.getAttribute('data-decimals') || '0', 10);
+          var suffix = el.getAttribute('data-suffix') || '';
+          var obj = {val: 0};
+          gsap.to(obj, {
+            val: target,
+            duration: 1.2,
+            ease: 'power2.out',
+            onUpdate: function(){
+              el.textContent = obj.val.toFixed(decimals) + suffix;
+            }
+          });
+        });
+        gsap.to(syLis, {
+          opacity: 1,
+          y: 0,
+          duration: 0.6,
+          stagger: 0.18,
+          delay: 0.3,
+          ease: 'power2.out'
+        });
+      }
+    });
+  }
 })();
 </script>
 </body>
