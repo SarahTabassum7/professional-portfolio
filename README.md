@@ -13,23 +13,19 @@ Business Analyst with 6+ years of experience across fintech, e-commerce, HR tech
 
 `BRDs` `FRDs` `RTMs` `UAT` `SQL` `Power BI` `Python` `Agile / Scrum` `Stakeholder Management` `Financial Modeling`
 
+## Career Impact
+
+- **Cut data discrepancies by 25%** by building advanced SQL validation processes
+- **Boosted issue resolution accuracy by 12%** through Python-driven data analysis
+- **Reduced post-release defects by 20%** by introducing structured UAT and root cause analysis
+- **Improved team onboarding efficiency by 30%** by creating SOPs and knowledge-transfer programs
+
 ## Featured Projects
 
-| Project | Description |
-|---|---|
-| **SportsPulse** | AI-powered sports league management — live SaaS platform |
-| **AI-Enabled Staffing Portal** | Built for PamTen Inc. |
-| **Customer Churn Prediction** | ML classification model — 85% accuracy, 0.836 ROC-AUC |
-| **Uber Ride Allocation Optimization** | Allocation strategy modeling |
-
-## Key Impact
-
-| Metric | Result |
-|---|---|
-| Data discrepancies | ↓ 25% via advanced SQL validation |
-| Issue resolution accuracy | ↑ 12% via Python-based data analysis |
-| Post-release defects | ↓ 20% via structured UAT and root cause analysis |
-| Team onboarding efficiency | ↑ 30% via SOPs and knowledge transfer |
+- **SportsPulse** — AI-powered sports league management platform, live in production as a SaaS product
+- **AI-Enabled Staffing Portal** — built for PamTen Inc. to streamline staffing operations
+- **Customer Churn Prediction** — ML classification model delivering 85% accuracy and a 0.836 ROC-AUC
+- **Uber Ride Allocation Optimization** — data-driven modeling to improve ride allocation strategy
 
 ## Contact
 
